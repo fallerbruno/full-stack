@@ -5,7 +5,7 @@ import {
   LoginContainer,
   LoginTitle,
 } from "./styles";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 export function Login() {
   const {
@@ -14,7 +14,7 @@ export function Login() {
     formState: { errors },
   } = useForm();
 
-  const submitForm = (data: any) => {
+  const submitForm = (data: FieldValues) => {
     console.log(data);
   };
 
