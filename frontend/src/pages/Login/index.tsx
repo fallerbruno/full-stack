@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { loginApi } from "../../api/loginApi";
 import { Input } from "../../components/Input";
 import {
   ButtonContainer,
@@ -5,7 +7,9 @@ import {
   LoginContainer,
   LoginTitle,
 } from "./styles";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { LoginContext } from "../../Context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const {
@@ -14,8 +18,14 @@ export function Login() {
     formState: { errors },
   } = useForm();
 
-  const submitForm = (data: FieldValues) => {
-    console.log(data);
+  const userContext = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  const submitForm = async (data: any) => {
+    const response = await loginApi(data);
+    userContext.saveUser(response.email, response.nome, response.password);
+
+    navigate("/");
   };
 
   return (
