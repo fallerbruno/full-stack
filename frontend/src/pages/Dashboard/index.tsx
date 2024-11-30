@@ -16,7 +16,7 @@ export function Dashboard() {
       <h2>{userContext.email}</h2>
       <h2>{userContext.nome}</h2>
       <h2>{userContext.password}</h2>
-      <button onClick={migrarParaHome}>Home</button>
+      <button onClick={migrarParaHome}>Casa</button>
     </div>
   );
 }
